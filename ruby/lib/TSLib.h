@@ -13,7 +13,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define TSAPI_MAX_SPACES 16
+#define TSAPI_MAX_SPACES 32
 
 /*
  * In case of comm error, all the functions apart from tsapi_libTotalSpacesVersion() will 
@@ -50,66 +50,55 @@ const char *tsapi_totalSpacesVersion();
 const char *tsapi_libTotalSpacesVersion();
 
 /*
+ * Struct containing the count of spaces and a pointer to an
+ * array of CGDirectDisplayIDs.
+ */
+struct tsapi_displays {
+  unsigned int displaysCount;
+  CGDirectDisplayID *displays;
+};
+
+/*
+ * Return a pointer to a tsapi_displays struct containing information about all the displays.
+ *
+ * The first display in the list will be the main display. The main display is the display 
+ * with its screen location at (0,0) in the global display coordinate space. In a system
+ * without display mirroring, the display with the menu bar is typically the main display.
+ *
+ * You must call tsapi_freeDisplayList when you have finished with this.
+ */
+struct tsapi_displays *tsapi_displayList();
+
+/*
+ * Free a previously returned tsapi_displays struct
+ */
+void tsapi_freeDisplayList(struct tsapi_displays *displayList);
+
+/*
  * The number of the current space.
  *
  * If the current space is the dashboard, 0 is returned.
  */
-unsigned int tsapi_currentSpaceNumber();
+unsigned int tsapi_currentSpaceNumberOnDisplay(CGDirectDisplayID displayID);
 
 /*
  * The name for the given space number.
  *
  * You must call tsapi_freeString when you have finished with the returned string.
  */
-const char *tsapi_spaceNameForSpaceNumber(unsigned int spaceNumber);
+const char *tsapi_spaceNameForSpaceNumberOnDisplay(unsigned int spaceNumber, CGDirectDisplayID displayID);
 
 /*
  * The total number of spaces.
  * This includes the dashboard if you have it set as a space, and any
  * fullscreen apps.
  */
-unsigned int tsapi_numberOfSpaces();
-
-/*
- * The number of fullscreen apps.
- */
-unsigned int tsapi_numberOfFullScreens();
-
-/*
- * The number of desktops / normal spaces.
- */
-unsigned int tsapi_numberOfDesktops();
-
-/*
- * The number of fullscreen apps that are allowed to be present
- * in the grid, defined in advanced preferences.
- */
-unsigned int tsapi_numberOfFullScreensInGrid();
-
-/*
- * Is the dashboard set to be a space in Mission Control preferences.
- */
-bool tsapi_dashboardIsASpace();
-
-/*
- * The number of rows defined in TotalSpaces layout preferences.
- */
-unsigned int tsapi_definedRows();
+unsigned int tsapi_numberOfSpacesOnDisplay(CGDirectDisplayID displayID);
 
 /*
  * The number of columns defined in TotalSpaces layout preferences.
  */
-unsigned int tsapi_definedColumns();
-
-/*
- * Sets the number of rows in the TotalSpaces grid.
- * Returns true on success, false if the new grid would exceed TSAPI_MAX_SPACES
- * or if rows is zero.
- * Note that the actual number of desktops present in the system is unchanged,
- * you should call tsapi_addDesktops or tsapi_removeDesktops after calling this
- * function.
- */
-bool tsapi_setDefinedRows(unsigned int rows);
+unsigned int tsapi_definedColumnsOnDisplay(CGDirectDisplayID displayID);
 
 /*
  * Sets the number of columns in the TotalSpaces grid.
@@ -119,7 +108,7 @@ bool tsapi_setDefinedRows(unsigned int rows);
  * you should call tsapi_addDesktops or tsapi_removeDesktops after calling this
  * function.
  */
-bool tsapi_setDefinedColumns(unsigned int columns);
+bool tsapi_setDefinedColumnsOnDisplay(unsigned int columns, CGDirectDisplayID displayID);
 
 /*
  * Call this to free strings returned by the TotalSpaces API.
@@ -130,14 +119,14 @@ void tsapi_freeString(char *str);
  * Switch the display to the given space.
  * Returns false if the space number is invalid.
  */
-bool tsapi_moveToSpace(unsigned int spaceNumber);
+bool tsapi_moveToSpaceOnDisplay(unsigned int spaceNumber, CGDirectDisplayID displayID);
 
 /*
  * Set the name of a space.
  * The maximum length is 255 bytes. The name should be in UTF-8.
  * Returns true on success, false if the name was too long or the space number was invalid.
  */
-bool tsapi_setNameForSpace(unsigned int spaceNumber, char *name);
+bool tsapi_setNameForSpaceOnDisplay(unsigned int spaceNumber, char *name, CGDirectDisplayID displayID);
 
 /*
  * Type for space change callback.
@@ -215,7 +204,7 @@ struct tsapi_spaces {
 struct tsapi_spaces *tsapi_windowList();
 
 /*
- * Free a previously returned spaceWindowsArray struct
+ * Free a previously returned tsapi_spaces struct
  */
 void tsapi_freeWindowList(struct tsapi_spaces *windowList);
 
@@ -236,16 +225,16 @@ bool tsapi_moveWindowToSpace(unsigned int windowId, unsigned int spaceNumber);
  * Returns true on success, false if the spaceNumber or positionNumber was
  * invalid
  */
-bool tsapi_moveSpaceToPosition(unsigned int spaceNumber, unsigned int positionNumber);
+bool tsapi_moveSpaceToPositionOnDisplay(unsigned int spaceNumber, unsigned int positionNumber, CGDirectDisplayID displayID);
 
 /*
  * Add desktops
- * There can be at most 16 desktops
+ * There can usually be at most 16 desktops, unless desktops have migrated
+ * from another monitor.
  *
- * Returns true on success, false if numberToAdd was zero, or would result in more than
- * 16 desktops
+ * Returns the number of desktops actually added.
  */
-bool tsapi_addDesktops(unsigned int numberToAdd);
+unsigned int tsapi_addDesktopsOnDisplay(unsigned int numberToAdd, CGDirectDisplayID displayID);
 
 /*
  * Remove desktops
@@ -260,7 +249,7 @@ bool tsapi_addDesktops(unsigned int numberToAdd);
  * Returns true on success, false if numberToRemove was zero or would result in less
  * than 1 desktop remaining.
  */
-bool tsapi_removeDesktops(unsigned int numberToRemove);
+bool tsapi_removeDesktopsOnDisplay(unsigned int numberToRemove, CGDirectDisplayID displayID);
 
 #endif
 
