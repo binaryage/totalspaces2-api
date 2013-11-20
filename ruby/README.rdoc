@@ -1,0 +1,65 @@
+= TotalSpaces2 - Ruby API bindings for TotalSpaces2 from BinaryAge
+
+== You can use the API with versions 2.0.12 and above of totalspaces.
+
+This gem enables you to get information from and to control {TotalSpaces2}[link:http://totalspaces.binaryage.com]
+
+It is the officially supported way of using the API library libtotalspaces2api, and the required dylib 
+comes bundled with this gem. This gem uses {Ruby-FFI}[link:https://github.com/ffi/ffi] to call the functions in the dylib.
+You'll need a sane ruby and compilation environment to install ruby-ffi - it probably won't install immediately with the
+ruby that comes with Mavericks because none of the compilation tools are present. We use {homebrew}[link:http://mxcl.github.com/homebrew/]
+and {rbenv}[link:https://github.com/sstephenson/rbenv/] to manage our ruby scripting environment.
+
+You may use this gem in various ways. For instance, you could:
+
+* Display a message or alert when a particular space is moved to
+
+* Automatically change the name of spaces depending on what apps are in them
+
+* Record which spaces certain windows are on, and restoring those windows to those spaces when the owning app restarts
+
+* Trigger moving certain windows between spaces
+
+API support, and support for this gem starts with TotalSpaces2 v2.0.12 The API is a premium feature,
+and will only work with registered versions of TotalSpaces2.
+
+== Download and installation
+
+The latest version of the TotalSpaces2 gem can be installed with RubyGems:
+
+  % [sudo] gem install totalspaces2
+
+Source code can be downloaded on GitHub
+
+* https://github.com/binaryage/totalspaces2-api
+
+
+== Documentation
+
+{module TotalSpaces2}[link:http://binaryage.github.io/totalspaces2-api/ruby/rdoc/TotalSpaces2.html]
+
+== Examples
+   require 'totalspaces2'
+   
+   TotalSpaces.on_space_change {|from, to| puts "Moving from space #{from} to space #{to}";}
+
+   TotalSpaces.move_to_space(1)
+
+   current_space = TotalSpaces.current_space
+   puts "Current space number: #{current_space}"
+   puts "Current space is called: #{TotalSpaces.name_for_space(current_space)}"
+
+   TotalSpaces.set_name_for_space(1, "Home")
+
+== License
+
+The TotalSpaces2 gem is released under the MIT license:
+
+* http://www.opensource.org/licenses/MIT
+
+The source code of the dylib is not available at this time.
+
+
+== Support and feature requests
+
+* http://discuss.binaryage.com
