@@ -1,6 +1,6 @@
 = TotalSpaces2 - Ruby API bindings for TotalSpaces2 from BinaryAge
 
-== You can use the API with versions 2.0.12 and above of totalspaces.
+== PRERELEASE: You will be able to use the API with versions 2.1 and above of totalspaces.
 
 This gem enables you to get information from and to control {TotalSpaces2}[link:http://totalspaces.binaryage.com]
 
