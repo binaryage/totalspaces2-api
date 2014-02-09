@@ -41,15 +41,15 @@ Source code can be downloaded on GitHub
 == Examples
    require 'totalspaces2'
    
-   TotalSpaces.on_space_change {|from, to| puts "Moving from space #{from} to space #{to}";}
+   TotalSpaces2.on_space_change {|from, to, display_id| puts "Moving from space #{from} to space #{to}";}
 
-   TotalSpaces.move_to_space(1)
+   TotalSpaces2.move_to_space(1)
 
-   current_space = TotalSpaces.current_space
+   current_space = TotalSpaces2.current_space
    puts "Current space number: #{current_space}"
-   puts "Current space is called: #{TotalSpaces.name_for_space(current_space)}"
+   puts "Current space is called: #{TotalSpaces2.name_for_space(current_space)}"
 
-   TotalSpaces.set_name_for_space(1, "Home")
+   TotalSpaces2.set_name_for_space(1, "Home")
 
 == License
 

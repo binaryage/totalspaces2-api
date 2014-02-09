@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{totalspaces2}
-  s.version = "1.0"
+  s.version = "2.0"
 
   s.authors = ["Stephen Sykes"]
   s.date = %q{2013-11-20}

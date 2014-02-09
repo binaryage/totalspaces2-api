@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module TotalSpaces - RDoc Documentation</title>
+<title>module TotalSpaces2 - RDoc Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -49,7 +49,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/totalspaces.rb
+    <li>lib/totalspaces2.rb
   </ul>
 </nav>
 
@@ -69,6 +69,8 @@
     
     <li ><a href="#method-c-add_desktops">::add_desktops</a>
     
+    <li ><a href="#method-c-add_desktops_on_display">::add_desktops_on_display</a>
+    
     <li ><a href="#method-c-api_version">::api_version</a>
     
     <li ><a href="#method-c-cancel_on_layout_change">::cancel_on_layout_change</a>
@@ -77,29 +79,37 @@
     
     <li ><a href="#method-c-current_space">::current_space</a>
     
-    <li ><a href="#method-c-dashboard_is_a_space-3F">::dashboard_is_a_space?</a>
+    <li ><a href="#method-c-current_space_on_display">::current_space_on_display</a>
+    
+    <li ><a href="#method-c-display_list">::display_list</a>
     
     <li ><a href="#method-c-grid_columns">::grid_columns</a>
     
-    <li ><a href="#method-c-grid_rows">::grid_rows</a>
+    <li ><a href="#method-c-grid_columns_on_display">::grid_columns_on_display</a>
     
     <li ><a href="#method-c-lib_total_spaces_version">::lib_total_spaces_version</a>
     
+    <li ><a href="#method-c-main_display">::main_display</a>
+    
     <li ><a href="#method-c-move_space_to_position">::move_space_to_position</a>
+    
+    <li ><a href="#method-c-move_space_to_position_on_display">::move_space_to_position_on_display</a>
     
     <li ><a href="#method-c-move_to_space">::move_to_space</a>
     
+    <li ><a href="#method-c-move_to_space_on_display">::move_to_space_on_display</a>
+    
     <li ><a href="#method-c-move_window_to_space">::move_window_to_space</a>
+    
+    <li ><a href="#method-c-move_window_to_space_on_display">::move_window_to_space_on_display</a>
     
     <li ><a href="#method-c-name_for_space">::name_for_space</a>
     
-    <li ><a href="#method-c-number_of_desktops">::number_of_desktops</a>
-    
-    <li ><a href="#method-c-number_of_fullscreens">::number_of_fullscreens</a>
-    
-    <li ><a href="#method-c-number_of_fullscreens_in_grid">::number_of_fullscreens_in_grid</a>
+    <li ><a href="#method-c-name_for_space_on_display">::name_for_space_on_display</a>
     
     <li ><a href="#method-c-number_of_spaces">::number_of_spaces</a>
+    
+    <li ><a href="#method-c-number_of_spaces_on_display">::number_of_spaces_on_display</a>
     
     <li ><a href="#method-c-on_layout_change">::on_layout_change</a>
     
@@ -107,11 +117,15 @@
     
     <li ><a href="#method-c-remove_desktops">::remove_desktops</a>
     
+    <li ><a href="#method-c-remove_desktops_on_display">::remove_desktops_on_display</a>
+    
     <li ><a href="#method-c-set_grid_columns">::set_grid_columns</a>
     
-    <li ><a href="#method-c-set_grid_rows">::set_grid_rows</a>
+    <li ><a href="#method-c-set_grid_columns_on_display">::set_grid_columns_on_display</a>
     
     <li ><a href="#method-c-set_name_for_space">::set_name_for_space</a>
+    
+    <li ><a href="#method-c-set_name_for_space_on_display">::set_name_for_space_on_display</a>
     
     <li ><a href="#method-c-total_spaces_version">::total_spaces_version</a>
     
@@ -138,7 +152,7 @@
 
   <ul class="link-list">
   
-    <li><a href="./TotalSpaces.html">TotalSpaces</a>
+    <li><a href="./TotalSpaces2.html">TotalSpaces2</a>
   
   </ul>
 </nav>
@@ -147,7 +161,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module TotalSpaces</h1>
+  <h1 class="module">module TotalSpaces2</h1>
 
   <div id="description" class="description">
     
@@ -168,11 +182,6 @@
       <dl>
       
         <dt id="MAX_DESKTOPS">MAX_DESKTOPS
-        
-        <dd class="description">
-        
-      
-        <dt id="UNUSED_SPACE_NUMBER_OFFSET">UNUSED_SPACE_NUMBER_OFFSET
         
         <dd class="description">
         
@@ -202,22 +211,22 @@
 
         <div class="method-description">
           
-          <p>Add desktops There can be at most 16 desktops Returns true on success,
-false if number_to_add was zero, or would result  in more than 16 desktops.
-The <a
-href="TotalSpaces.html#method-c-on_layout_change">::on_layout_change</a>
+          <p>Add desktops There can be at most 16 desktops unless the display has
+collected some when a secondary display has been unplugged. Returns true on
+success, false if number_to_add was zero, or would result  in more than 16
+desktops. The <a
+href="TotalSpaces2.html#method-c-on_layout_change">::on_layout_change</a>
 notification will be sent if a changed was made.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">add_desktops</span>(<span class="ruby-value">1</span>)
-</pre>
+<pre>TotalSpaces2.add_desktops(1)</pre>
           
           
 
           
           <div class="method-source-code" id="add_desktops-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 441</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 524</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_desktops</span>(<span class="ruby-identifier">number_to_add</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_addDesktops</span>(<span class="ruby-identifier">number_to_add</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_addDesktopsOnDisplay</span>(<span class="ruby-identifier">number_to_add</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- add_desktops-source -->
           
@@ -227,6 +236,47 @@ notification will be sent if a changed was made.</p>
 
         
       </div><!-- add_desktops-method -->
+
+    
+      <div id="method-c-add_desktops_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add_desktops_on_display</span><span
+            class="method-args">(number_to_add, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add desktops There can be at most 16 desktops unless the display has
+collected some when a secondary display has been unplugged. Returns true on
+success, false if number_to_add was zero, or would result  in more than 16
+desktops. The <a
+href="TotalSpaces2.html#method-c-on_layout_change">::on_layout_change</a>
+notification will be sent if a changed was made.</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.add_desktops_on_display(1, display_id)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="add_desktops_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 538</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add_desktops_on_display</span>(<span class="ruby-identifier">number_to_add</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_addDesktopsOnDisplay</span>(<span class="ruby-identifier">number_to_add</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- add_desktops_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- add_desktops_on_display-method -->
 
     
       <div id="method-c-api_version" class="method-detail ">
@@ -243,22 +293,21 @@ notification will be sent if a changed was made.</p>
         <div class="method-description">
           
           <p>Returns the version of the api present in <a
-href="TotalSpaces.html">TotalSpaces</a>, a string such as “1.0” You should
-be using the same dylib version as that returned by the this call</p>
+href="TotalSpaces2.html">TotalSpaces2</a>, a string such as “1.0” You
+should be using the same dylib version as that returned by the this call</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;TotalSpaces API version: #{TotalSpaces.api_version}&quot;</span>
+<pre>puts &quot;TotalSpaces2 API version: #{TotalSpaces2.api_version}&quot;
 
-<span class="ruby-keyword">if</span> <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">lib_total_spaces_version</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">api_version</span>
-  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Comms error!&quot;</span>
-  <span class="ruby-identifier">exit</span>(<span class="ruby-value">1</span>)
-<span class="ruby-keyword">end</span>
-</pre>
+ if TotalSpaces2.lib_total_spaces_version.split(&#39;.&#39;)[0] != TotalSpaces2.api_version.split(&#39;.&#39;)[0]
+  puts &quot;Comms error!&quot;
+  exit(1)
+end</pre>
           
           
 
           
           <div class="method-source-code" id="api_version-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 181</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 199</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">api_version</span>
   <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_apiVersion</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -291,7 +340,7 @@ be using the same dylib version as that returned by the this call</p>
 
           
           <div class="method-source-code" id="cancel_on_layout_change-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 367</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 430</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cancel_on_layout_change</span>
   <span class="ruby-identifier">$tsapi_on_layout_change_block</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_unsetLayoutChangedCallback</span>
@@ -320,14 +369,14 @@ be using the same dylib version as that returned by the this call</p>
         <div class="method-description">
           
           <p>Cancel the <a
-href="TotalSpaces.html#method-c-on_space_change">::on_space_change</a>
+href="TotalSpaces2.html#method-c-on_space_change">::on_space_change</a>
 notification.</p>
           
           
 
           
           <div class="method-source-code" id="cancel_on_space_change-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 339</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 402</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cancel_on_space_change</span>
   <span class="ruby-identifier">$tsapi_on_space_change_block</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_unsetSpaceWillChangeCallback</span>
@@ -355,20 +404,18 @@ notification.</p>
 
         <div class="method-description">
           
-          <p>Returns the number of the current space. Numbering starts at 1, except if
-you have the Dashboard enabled as a space, in which case the Dashboard
-counts as space 0</p>
+          <p>Returns the number of the current space on the main display. Numbering
+starts at 1.</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current space number: #{TotalSpaces.current_space}&quot;</span>
-</pre>
+<pre>puts &quot;Current space number: #{TotalSpaces2.current_space}&quot;</pre>
           
           
 
           
           <div class="method-source-code" id="current_space-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 242</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">current_space</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_currentSpaceNumber</span>
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_currentSpaceNumberOnDisplay</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- current_space-source -->
           
@@ -380,10 +427,47 @@ counts as space 0</p>
       </div><!-- current_space-method -->
 
     
-      <div id="method-c-dashboard_is_a_space-3F" class="method-detail ">
+      <div id="method-c-current_space_on_display" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">dashboard_is_a_space?</span><span
+          <span class="method-name">current_space_on_display</span><span
+            class="method-args">(display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the number of the current space on the given display.  Space
+numbering starts at 1</p>
+
+<pre>display_id = TotalSpaces2.displays[0]
+puts &quot;Current space number: #{TotalSpaces2.current_space_on_display(display_id)}&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="current_space_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 252</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">current_space_on_display</span>(<span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_currentSpaceNumberOnDisplay</span>(<span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- current_space_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- current_space_on_display-method -->
+
+    
+      <div id="method-c-display_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">display_list</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -393,28 +477,36 @@ counts as space 0</p>
 
         <div class="method-description">
           
-          <p>Returns true if the dashboard is configured to appear as a space in Mission
-Control preferences.</p>
+          <p>Returns an array of hashes with information about attached displays. The
+ids returned from this call can be used where a display id is required in
+the other calls in this library.</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Dashboard is a space: #{TotalSpaces.dashboard_is_a_space?}&quot;</span>
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Attached displays: #{TotalSpaces2.display_list}&quot;</span>
+
+[{:<span class="ruby-identifier">display_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">69679040</span>, :<span class="ruby-identifier">display_name=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Color LCD&quot;</span>, :<span class="ruby-identifier">width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1440</span>, :<span class="ruby-identifier">height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">900</span>}, 
+{:<span class="ruby-identifier">display_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">69514913</span>, :<span class="ruby-identifier">display_name=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;LED Cinema Display&quot;</span>, :<span class="ruby-identifier">width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">2560</span>, :<span class="ruby-identifier">height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1440</span>}]
 </pre>
           
           
 
           
-          <div class="method-source-code" id="dashboard_is_a_space-3F-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 254</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">dashboard_is_a_space?</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_dashboardIsASpace</span>
+          <div class="method-source-code" id="display_list-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">display_list</span>
+  <span class="ruby-identifier">list</span> = <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_displayList</span>
+  <span class="ruby-identifier">displays</span> = <span class="ruby-constant">Displays</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">displays</span>.<span class="ruby-identifier">null?</span> <span class="ruby-operator">?</span> [] <span class="ruby-operator">:</span> <span class="ruby-identifier">displays</span>.<span class="ruby-identifier">display_info</span>
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_freeDisplayList</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">result</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- dashboard_is_a_space-3F-source -->
+          </div><!-- display_list-source -->
           
         </div>
 
         
 
         
-      </div><!-- dashboard_is_a_space-3F-method -->
+      </div><!-- display_list-method -->
 
     
       <div id="method-c-grid_columns" class="method-detail ">
@@ -431,18 +523,17 @@ Control preferences.</p>
         <div class="method-description">
           
           <p>Returns the number of columns defined in <a
-href="TotalSpaces.html">TotalSpaces</a></p>
+href="TotalSpaces2.html">TotalSpaces2</a> for the main display</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Number of columns: #{TotalSpaces.grid_columns}&quot;</span>
-</pre>
+<pre>puts &quot;Number of columns: #{TotalSpaces2.grid_columns}&quot;</pre>
           
           
 
           
           <div class="method-source-code" id="grid_columns-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 270</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 300</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">grid_columns</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_definedColumns</span>
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_definedColumnsOnDisplay</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- grid_columns-source -->
           
@@ -454,11 +545,11 @@ href="TotalSpaces.html">TotalSpaces</a></p>
       </div><!-- grid_columns-method -->
 
     
-      <div id="method-c-grid_rows" class="method-detail ">
+      <div id="method-c-grid_columns_on_display" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">grid_rows</span><span
-            class="method-args">()</span>
+          <span class="method-name">grid_columns_on_display</span><span
+            class="method-args">(display_id)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -467,28 +558,28 @@ href="TotalSpaces.html">TotalSpaces</a></p>
 
         <div class="method-description">
           
-          <p>Returns the number of rows defined in <a
-href="TotalSpaces.html">TotalSpaces</a></p>
+          <p>Returns the number of columns defined in <a
+href="TotalSpaces2.html">TotalSpaces2</a></p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Number of rows: #{TotalSpaces.grid_rows}&quot;</span>
-</pre>
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+puts &quot;Number of columns: #{TotalSpaces2.grid_columns_on_display(display_id)}&quot;</pre>
           
           
 
           
-          <div class="method-source-code" id="grid_rows-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 262</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">grid_rows</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_definedRows</span>
+          <div class="method-source-code" id="grid_columns_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 309</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grid_columns_on_display</span>(<span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_definedColumnsOnDisplay</span>(<span class="ruby-identifier">display_id</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- grid_rows-source -->
+          </div><!-- grid_columns_on_display-source -->
           
         </div>
 
         
 
         
-      </div><!-- grid_rows-method -->
+      </div><!-- grid_columns_on_display-method -->
 
     
       <div id="method-c-lib_total_spaces_version" class="method-detail ">
@@ -505,22 +596,21 @@ href="TotalSpaces.html">TotalSpaces</a></p>
         <div class="method-description">
           
           <p>Returns the version of the dylib, a string such as “1.0” You should be
-using the same dylib version as that returned by the <a
-href="TotalSpaces.html#method-c-api_version">::api_version</a> call</p>
+using the same dylib major version number as that returned by the <a
+href="TotalSpaces2.html#method-c-api_version">::api_version</a> call</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;libTotalSpaces version: #{TotalSpaces.lib_total_spaces_version}&quot;</span>
+<pre>puts &quot;libTotalSpaces2 version: #{TotalSpaces2.lib_total_spaces_version}&quot;
 
-<span class="ruby-keyword">if</span> <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">lib_total_spaces_version</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">api_version</span>
-  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Comms error!&quot;</span>
-  <span class="ruby-identifier">exit</span>(<span class="ruby-value">1</span>)
-<span class="ruby-keyword">end</span>
-</pre>
+if TotalSpaces2.lib_total_spaces_version.split(&#39;.&#39;)[0] != TotalSpaces2.api_version.split(&#39;.&#39;)[0]
+  puts &quot;Comms error!&quot;
+  exit(1)
+end</pre>
           
           
 
           
           <div class="method-source-code" id="lib_total_spaces_version-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 167</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">lib_total_spaces_version</span>
   <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_libTotalSpacesVersion</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -532,6 +622,45 @@ href="TotalSpaces.html#method-c-api_version">::api_version</a> call</p>
 
         
       </div><!-- lib_total_spaces_version-method -->
+
+    
+      <div id="method-c-main_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">main_display</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns information about the main display. Methods that do not take a
+display id always operate on this display.</p>
+
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Main display id: #{TotalSpaces2.main_display_id}&quot;</span>
+
+{:<span class="ruby-identifier">display_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">69679040</span>, :<span class="ruby-identifier">display_name=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Color LCD&quot;</span>, :<span class="ruby-identifier">width=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">1440</span>, :<span class="ruby-identifier">height=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">900</span>}
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="main_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">main_display</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">display_list</span>[<span class="ruby-value">0</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- main_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- main_display-method -->
 
     
       <div id="method-c-move_space_to_position" class="method-detail ">
@@ -547,21 +676,19 @@ href="TotalSpaces.html#method-c-api_version">::api_version</a> call</p>
 
         <div class="method-description">
           
-          <p>Move space to a new position You cannot move a space to position 1, and you
-cannot move the first space anywhere else - it is fixed. You cannot move
-full screen apps around with this method, only normal desktops Returns
-false if the space_number or position_number is not valid.</p>
+          <p>Move space to a new position in the grid on the main display.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">move_space_to_position</span>(<span class="ruby-value">4</span>, <span class="ruby-value">2</span>)
-</pre>
+<p>Returns false if the space_number or position_number is not valid.</p>
+
+<pre>TotalSpaces2.move_space_to_position(4, 2)</pre>
           
           
 
           
           <div class="method-source-code" id="move_space_to_position-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 429</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 499</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">move_space_to_position</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">position_number</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveSpaceToPosition</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">position_number</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveSpaceToPositionOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">position_number</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- move_space_to_position-source -->
           
@@ -571,6 +698,45 @@ false if the space_number or position_number is not valid.</p>
 
         
       </div><!-- move_space_to_position-method -->
+
+    
+      <div id="method-c-move_space_to_position_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_space_to_position_on_display</span><span
+            class="method-args">(space_number, position_number, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move space to a new position in the grid. Spaces can only be moved  within
+their own display.</p>
+
+<p>Returns false if the space_number or position_number is not valid.</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.move_space_to_position_on_display(4, 2, display_id)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="move_space_to_position_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 511</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">move_space_to_position_on_display</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">position_number</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveSpaceToPositionOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">position_number</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- move_space_to_position_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- move_space_to_position_on_display-method -->
 
     
       <div id="method-c-move_to_space" class="method-detail ">
@@ -586,21 +752,21 @@ false if the space_number or position_number is not valid.</p>
 
         <div class="method-description">
           
-          <p>Command <a href="TotalSpaces.html">TotalSpaces</a> to switch to the given
-space number. Returns false if the space number was invalid. The <a
-href="TotalSpaces.html#method-c-on_space_change">::on_space_change</a>
+          <p>Command <a href="TotalSpaces2.html">TotalSpaces2</a> to switch to the given
+space number on the main display. Returns false if the space number was
+invalid. The <a
+href="TotalSpaces2.html#method-c-on_space_change">::on_space_change</a>
 notification will be sent.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">move_to_space</span>(<span class="ruby-value">1</span>)
-</pre>
+<pre>TotalSpaces2.move_to_space(1)</pre>
           
           
 
           
           <div class="method-source-code" id="move_to_space-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 304</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">move_to_space</span>(<span class="ruby-identifier">space_number</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveToSpace</span>(<span class="ruby-identifier">space_number</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveToSpaceOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- move_to_space-source -->
           
@@ -610,6 +776,45 @@ notification will be sent.</p>
 
         
       </div><!-- move_to_space-method -->
+
+    
+      <div id="method-c-move_to_space_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_to_space_on_display</span><span
+            class="method-args">(space_number, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Command <a href="TotalSpaces2.html">TotalSpaces2</a> to switch to the given
+space number. Returns false if the space number was invalid. The <a
+href="TotalSpaces2.html#method-c-on_space_change">::on_space_change</a>
+notification will be sent.</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.move_to_space_on_Display(1, display_id)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="move_to_space_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 355</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">move_to_space_on_display</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveToSpaceOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- move_to_space_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- move_to_space_on_display-method -->
 
     
       <div id="method-c-move_window_to_space" class="method-detail ">
@@ -633,9 +838,9 @@ invalid.</p>
 
           
           <div class="method-source-code" id="move_window_to_space-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 417</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 481</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">move_window_to_space</span>(<span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">space_number</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveWindowToSpace</span>(<span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">space_number</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveWindowToSpaceOnDisplay</span>(<span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">space_number</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- move_window_to_space-source -->
           
@@ -645,6 +850,41 @@ invalid.</p>
 
         
       </div><!-- move_window_to_space-method -->
+
+    
+      <div id="method-c-move_window_to_space_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">move_window_to_space_on_display</span><span
+            class="method-args">(window_id, space_number, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Move a window to a given space on the main display The window_id parameter
+must be fetched using window_list. Returns false if the space_number or
+window_id is invalid.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="move_window_to_space_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 489</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">move_window_to_space_on_display</span>(<span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_moveWindowToSpaceOnDisplay</span>(<span class="ruby-identifier">window_id</span>, <span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- move_window_to_space_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- move_window_to_space_on_display-method -->
 
     
       <div id="method-c-name_for_space" class="method-detail ">
@@ -660,20 +900,19 @@ invalid.</p>
 
         <div class="method-description">
           
-          <p>Returns the name for a space. The returned string will be empty if the
-space number is not valid</p>
+          <p>Returns the name for a space on the main display. The returned string will
+be empty  if the space number is not valid</p>
 
-<pre class="ruby"><span class="ruby-identifier">current_space</span> = <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">current_space</span>
-<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current space is called: #{TotalSpaces.name_for_space(current_space)}&quot;</span>
-</pre>
+<pre>current_space = TotalSpaces2.current_space
+puts &quot;Current space is called: #{TotalSpaces2.name_for_space(current_space)}&quot;</pre>
           
           
 
           
           <div class="method-source-code" id="name_for_space-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 208</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 262</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">name_for_space</span>(<span class="ruby-identifier">space_number</span>)
-  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_spaceNameForSpaceNumber</span>(<span class="ruby-identifier">space_number</span>))
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_spaceNameForSpaceNumberOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-value">0</span>))
   <span class="ruby-identifier">name</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- name_for_space-source -->
@@ -686,11 +925,11 @@ space number is not valid</p>
       </div><!-- name_for_space-method -->
 
     
-      <div id="method-c-number_of_desktops" class="method-detail ">
+      <div id="method-c-name_for_space_on_display" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">number_of_desktops</span><span
-            class="method-args">()</span>
+          <span class="method-name">name_for_space_on_display</span><span
+            class="method-args">(space_number, display_id)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -699,105 +938,30 @@ space number is not valid</p>
 
         <div class="method-description">
           
-          <p>Returns the number of desktops that are present in the system. This may be
-a bigger number that the rows x columns in the grid if more desktops have
-been created in Mission Control.</p>
+          <p>Returns the name for a space. The returned string will be empty if the
+space number is not valid</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Number of desktops: #{TotalSpaces.number_of_desktops}&quot;</span>
-</pre>
+<pre>current_space = TotalSpaces2.current_space
+display_id = TotalSpaces2.main_display[:display_id]
+puts &quot;Current space is called: #{TotalSpaces2.name_for_space_on_display(current_space, display_id)}&quot;</pre>
           
           
 
           
-          <div class="method-source-code" id="number_of_desktops-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 246</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">number_of_desktops</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfDesktops</span>
+          <div class="method-source-code" id="name_for_space_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 274</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name_for_space_on_display</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_spaceNameForSpaceNumberOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">display_id</span>))
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- number_of_desktops-source -->
+          </div><!-- name_for_space_on_display-source -->
           
         </div>
 
         
 
         
-      </div><!-- number_of_desktops-method -->
-
-    
-      <div id="method-c-number_of_fullscreens" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">number_of_fullscreens</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Returns the number of fullscreen apps present</p>
-
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Number of fullscreens: #{TotalSpaces.number_of_fullscreens}&quot;</span>
-</pre>
-          
-          
-
-          
-          <div class="method-source-code" id="number_of_fullscreens-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 226</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">number_of_fullscreens</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfFullScreens</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- number_of_fullscreens-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- number_of_fullscreens-method -->
-
-    
-      <div id="method-c-number_of_fullscreens_in_grid" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">number_of_fullscreens_in_grid</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          <p>Returns the number of fullscreen apps tht are defined in the grid - this
-can be defined in Advanced preferences in <a
-href="TotalSpaces.html">TotalSpaces</a>. The return value does not depend
-on how many fullscreens actually exist in the grid - the value is the
-definition only, there could be fewer than this actually present.</p>
-
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Number of fullscreens in the grid: #{TotalSpaces.number_of_fullscreens_in_grid}&quot;</span>
-</pre>
-          
-          
-
-          
-          <div class="method-source-code" id="number_of_fullscreens_in_grid-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 237</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">number_of_fullscreens_in_grid</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfFullScreensInGrid</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- number_of_fullscreens_in_grid-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- number_of_fullscreens_in_grid-method -->
+      </div><!-- name_for_space_on_display-method -->
 
     
       <div id="method-c-number_of_spaces" class="method-detail ">
@@ -814,18 +978,17 @@ definition only, there could be fewer than this actually present.</p>
         <div class="method-description">
           
           <p>Returns the total number of spaces including fullscreens, dashboard (if
-it&#39;s a space),  and spaces that are unused in the grid</p>
+it&#39;s a space).</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Total number of spaces: #{TotalSpaces.number_of_spaces}&quot;</span>
-</pre>
+<pre>puts &quot;Total number of spaces: #{TotalSpaces2.number_of_spaces}&quot;</pre>
           
           
 
           
           <div class="method-source-code" id="number_of_spaces-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 218</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 283</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">number_of_spaces</span>
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfSpaces</span>
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfSpacesOnDisplay</span>(<span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- number_of_spaces-source -->
           
@@ -835,6 +998,43 @@ it&#39;s a space),  and spaces that are unused in the grid</p>
 
         
       </div><!-- number_of_spaces-method -->
+
+    
+      <div id="method-c-number_of_spaces_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">number_of_spaces_on_display</span><span
+            class="method-args">(display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the total number of spaces including fullscreens, dashboard (if
+it&#39;s a space).</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+puts &quot;Total number of spaces: #{TotalSpaces2.number_of_spaces_on_display(display_id)}&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="number_of_spaces_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 292</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">number_of_spaces_on_display</span>(<span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_numberOfSpacesOnDisplay</span>(<span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- number_of_spaces_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- number_of_spaces_on_display-method -->
 
     
       <div id="method-c-on_layout_change" class="method-detail ">
@@ -853,13 +1053,12 @@ it&#39;s a space),  and spaces that are unused in the grid</p>
           <p>Register for notifications on layout change. The given block will be called
 whenever the layout changes - this could be due to making an app
 fullscreen, changing a space name, or changing the layout of the <a
-href="TotalSpaces.html">TotalSpaces</a> grid. There are no arguments passed
-to the block.</p>
+href="TotalSpaces2.html">TotalSpaces2</a> grid. There are no arguments
+passed to the block.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">on_layout_change</span> {<span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Spaces changed&quot;</span>}
+<pre>TotalSpaces.on_layout_change {puts &quot;Spaces changed&quot;}
 
-<span class="ruby-identifier">sleep</span>
-</pre>
+sleep</pre>
 
 <p>When you get a notification from this method, you should re-fetch any
 information about the spaces that you may be storing.</p>
@@ -871,7 +1070,7 @@ registered one will be called.</p>
 
           
           <div class="method-source-code" id="on_layout_change-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 360</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 423</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">on_layout_change</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">$tsapi_on_layout_change_block</span> = <span class="ruby-identifier">block</span>  <span class="ruby-comment"># prevent GC</span>
   <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setLayoutChangedCallback</span>(<span class="ruby-identifier">block</span>)
@@ -903,7 +1102,7 @@ registered one will be called.</p>
 whenever you move from one space to another. The arguments are the space
 number you moved from, and the one you are moving to.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">on_space_change</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Moving from space #{from} to space #{to}&quot;</span>}
+<pre class="ruby"><span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">on_space_change</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">displayID</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Moving from space #{from} to space #{to}&quot;</span>}
 
 <span class="ruby-identifier">sleep</span>
 </pre>
@@ -911,14 +1110,14 @@ number you moved from, and the one you are moving to.</p>
 <p>There can only be one block registered at any time, the most recently
 registered one will be called. This callback is called just before the
 space actually changes - <a
-href="TotalSpaces.html#method-c-current_space">::current_space</a> will
+href="TotalSpaces2.html#method-c-current_space">::current_space</a> will
 still  report the from space.</p>
           
           
 
           
           <div class="method-source-code" id="on_space_change-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 332</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 395</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">on_space_change</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">$tsapi_on_space_change_block</span> = <span class="ruby-identifier">block</span>  <span class="ruby-comment"># prevent GC</span>
   <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setSpaceWillChangeCallback</span>(<span class="ruby-identifier">block</span>)
@@ -948,23 +1147,22 @@ still  report the from space.</p>
           
           <p>Remove desktops The highest numbered desktops are removed. Removing a
 desktop you are currently on will result in <a
-href="TotalSpaces.html">TotalSpaces</a> switching to another dektop. Any
+href="TotalSpaces2.html">TotalSpaces2</a> switching to another dektop. Any
 windows present on a desktop being removed will be moved to one of the
 remaining desktops. Returns true on success, false if number_to_remove was
 zero or would result in less than 1 desktop remaining. The <a
-href="TotalSpaces.html#method-c-on_layout_change">::on_layout_change</a>
+href="TotalSpaces2.html#method-c-on_layout_change">::on_layout_change</a>
 notification will be sent if a change was made.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">remove_desktops</span>(<span class="ruby-value">1</span>)
-</pre>
+<pre>TotalSpaces2.remove_desktops(1)</pre>
           
           
 
           
           <div class="method-source-code" id="remove_desktops-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 457</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 554</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_desktops</span>(<span class="ruby-identifier">number_to_remove</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_removeDesktops</span>(<span class="ruby-identifier">number_to_remove</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_removeDesktopsOnDisplay</span>(<span class="ruby-identifier">number_to_remove</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- remove_desktops-source -->
           
@@ -974,6 +1172,49 @@ notification will be sent if a change was made.</p>
 
         
       </div><!-- remove_desktops-method -->
+
+    
+      <div id="method-c-remove_desktops_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_desktops_on_display</span><span
+            class="method-args">(number_to_remove, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remove desktops The highest numbered desktops are removed. Removing a
+desktop you are currently on will result in <a
+href="TotalSpaces2.html">TotalSpaces2</a> switching to another dektop. Any
+windows present on a desktop being removed will be moved to one of the
+remaining desktops. Returns true on success, false if number_to_remove was
+zero or would result in less than 1 desktop remaining. The <a
+href="TotalSpaces2.html#method-c-on_layout_change">::on_layout_change</a>
+notification will be sent if a change was made.</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.remove_desktops_on_display(1, display_id)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="remove_desktops_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 571</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_desktops_on_display</span>(<span class="ruby-identifier">number_to_remove</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_removeDesktopsOnDisplay</span>(<span class="ruby-identifier">number_to_remove</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_desktops_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_desktops_on_display-method -->
 
     
       <div id="method-c-set_grid_columns" class="method-detail ">
@@ -990,23 +1231,23 @@ notification will be sent if a change was made.</p>
         <div class="method-description">
           
           <p>Sets the number of columns defined in <a
-href="TotalSpaces.html">TotalSpaces</a>.</p>
+href="TotalSpaces2.html">TotalSpaces2</a> for the main display.</p>
 
 <p>This does not change the actual number of desktops present, you should 
-call <a href="TotalSpaces.html#method-c-add_desktops">::add_desktops</a> or
-<a href="TotalSpaces.html#method-c-remove_desktops">::remove_desktops</a>
-as appropriate after changing the number of columns.</p>
+call <a href="TotalSpaces2.html#method-c-add_desktops">::add_desktops</a>
+or <a
+href="TotalSpaces2.html#method-c-remove_desktops">::remove_desktops</a> as
+appropriate after changing the number of columns.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">set_grid_columns</span>(<span class="ruby-value">3</span>)
-</pre>
+<pre>TotalSpaces2.set_grid_columns(3)</pre>
           
           
 
           
           <div class="method-source-code" id="set_grid_columns-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 294</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 321</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_grid_columns</span>(<span class="ruby-identifier">columns</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setDefinedColumns</span>(<span class="ruby-identifier">columns</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setDefinedColumnsOnDisplay</span>(<span class="ruby-identifier">columns</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- set_grid_columns-source -->
           
@@ -1018,11 +1259,11 @@ as appropriate after changing the number of columns.</p>
       </div><!-- set_grid_columns-method -->
 
     
-      <div id="method-c-set_grid_rows" class="method-detail ">
+      <div id="method-c-set_grid_columns_on_display" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">set_grid_rows</span><span
-            class="method-args">(rows)</span>
+          <span class="method-name">set_grid_columns_on_display</span><span
+            class="method-args">(columns, display_id)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -1031,33 +1272,35 @@ as appropriate after changing the number of columns.</p>
 
         <div class="method-description">
           
-          <p>Sets the number of rows defined in <a
-href="TotalSpaces.html">TotalSpaces</a>.</p>
+          <p>Sets the number of columns defined in <a
+href="TotalSpaces2.html">TotalSpaces2</a>.</p>
 
 <p>This does not change the actual number of desktops present, you should 
-call <a href="TotalSpaces.html#method-c-add_desktops">::add_desktops</a> or
-<a href="TotalSpaces.html#method-c-remove_desktops">::remove_desktops</a>
-as appropriate after changing the number of rows.</p>
+call <a
+href="TotalSpaces2.html#method-c-add_desktops_on_display">::add_desktops_on_display</a>
+or <a
+href="TotalSpaces2.html#method-c-remove_desktops_on_display">::remove_desktops_on_display</a>
+as appropriate  after changing the number of columns.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">set_grid_rows</span>(<span class="ruby-value">3</span>)
-</pre>
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.set_grid_columns_on_display(3, display_id)</pre>
           
           
 
           
-          <div class="method-source-code" id="set_grid_rows-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 282</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_grid_rows</span>(<span class="ruby-identifier">rows</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setDefinedRows</span>(<span class="ruby-identifier">rows</span>)
+          <div class="method-source-code" id="set_grid_columns_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 334</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_grid_columns_on_display</span>(<span class="ruby-identifier">columns</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setDefinedColumnsOnDisplay</span>(<span class="ruby-identifier">columns</span>, <span class="ruby-identifier">display_id</span>)
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- set_grid_rows-source -->
+          </div><!-- set_grid_columns_on_display-source -->
           
         </div>
 
         
 
         
-      </div><!-- set_grid_rows-method -->
+      </div><!-- set_grid_columns_on_display-method -->
 
     
       <div id="method-c-set_name_for_space" class="method-detail ">
@@ -1073,20 +1316,20 @@ as appropriate after changing the number of rows.</p>
 
         <div class="method-description">
           
-          <p>Set the name for a space. Note that using this command will cause a layout
-notification to be sent. if the new name was different from that previously
-set. The maximum length for a name is 255 bytes.</p>
+          <p>Set the name for a space on the main display. Note that using this command
+will cause a layout change notification to be sent if the new name was
+different from that previously set. The maximum length for a name is 255
+bytes.</p>
 
-<pre class="ruby"><span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">set_name_for_space</span>(<span class="ruby-value">1</span>, <span class="ruby-string">&quot;Home&quot;</span>)
-</pre>
+<pre>TotalSpaces2.set_name_for_space(1, &quot;Home&quot;)</pre>
           
           
 
           
           <div class="method-source-code" id="set_name_for_space-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 315</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 366</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_name_for_space</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">name</span>)
-  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setNameForSpace</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">name</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setNameForSpaceOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">name</span>, <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- set_name_for_space-source -->
           
@@ -1096,6 +1339,44 @@ set. The maximum length for a name is 255 bytes.</p>
 
         
       </div><!-- set_name_for_space-method -->
+
+    
+      <div id="method-c-set_name_for_space_on_display" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_name_for_space_on_display</span><span
+            class="method-args">(space_number, name, display_id)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Set the name for a space. Note that using this command will cause a layout
+change notification to be sent if the new name was different from that
+previously set. The maximum length for a name is 255 bytes.</p>
+
+<pre>display_id = TotalSpaces2.main_display[:display_id]
+TotalSpaces2.set_name_for_space_on_display(1, &quot;Home&quot;, display_id)</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="set_name_for_space_on_display-source">
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 378</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_name_for_space_on_display</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">display_id</span>)
+  <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_setNameForSpaceOnDisplay</span>(<span class="ruby-identifier">space_number</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">display_id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_name_for_space_on_display-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_name_for_space_on_display-method -->
 
     
       <div id="method-c-total_spaces_version" class="method-detail ">
@@ -1111,17 +1392,16 @@ set. The maximum length for a name is 255 bytes.</p>
 
         <div class="method-description">
           
-          <p>Returns the version of <a href="TotalSpaces.html">TotalSpaces</a> running
-on the system, a string such as “1.1.4”</p>
+          <p>Returns the version of <a href="TotalSpaces2.html">TotalSpaces2</a> running
+on the system, a string such as “2.0.12”</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;TotalSpaces version: #{TotalSpaces.total_spaces_version}&quot;</span>
-</pre>
+<pre>puts &quot;TotalSpaces2 version: #{TotalSpaces2.total_spaces_version}&quot;</pre>
           
           
 
           
           <div class="method-source-code" id="total_spaces_version-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 189</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">total_spaces_version</span>
   <span class="ruby-identifier">string_and_free</span>(<span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_totalSpacesVersion</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1149,19 +1429,22 @@ on the system, a string such as “1.1.4”</p>
         <div class="method-description">
           
           <p>Get a list of all the windows on your mac It returns an array containing a
-hash for each space. The hash contains the space number (key :space_number)
-and an array of hashes, one for each window (key :windows). The windows are
-in front to back order. Each window hash contains a window_id, title,
-frame, app_name and is_on_all_spaces flag</p>
+hash for each window. The hash contains the display id (key :display_id)
+and space number (key :space_number)  and details for each window. The
+windows are in front to back order within each space. Each window hash also
+contains a window_id, title, frame, app_name and is_on_all_spaces flag</p>
 
 <p>The below example would move the frontmost window to the next space to the
 right.</p>
 
-<pre class="ruby"><span class="ruby-identifier">windows</span> = <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">window_list</span>
+<pre class="ruby"><span class="ruby-identifier">windows</span> = <span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">window_list</span>
+<span class="ruby-identifier">current_space</span> = <span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">current_space</span>
+<span class="ruby-identifier">main_display_id</span> = <span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">main_display</span>[:<span class="ruby-identifier">display_id</span>]
 <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">windows</span>.<span class="ruby-identifier">empty?</span>
-  <span class="ruby-identifier">current_space_windows</span> = <span class="ruby-identifier">windows</span>[<span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">current_space</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
-  <span class="ruby-identifier">front_window</span> = <span class="ruby-identifier">current_space_windows</span>[:<span class="ruby-identifier">windows</span>][<span class="ruby-value">0</span>]
-  <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">move_window_to_space</span>(<span class="ruby-identifier">front_window</span>[:<span class="ruby-identifier">window_id</span>], <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">current_space</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">current_space_windows</span> = <span class="ruby-identifier">windows</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">window</span><span class="ruby-operator">|</span> <span class="ruby-identifier">window</span>[:<span class="ruby-identifier">display_id</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">main_display_id</span> 
+                                                   <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">window</span>[:<span class="ruby-identifier">space_number</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">current_space</span>}
+  <span class="ruby-identifier">front_window</span> = <span class="ruby-identifier">current_space_windows</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">move_window_to_space</span>(<span class="ruby-identifier">front_window</span>[:<span class="ruby-identifier">window_id</span>], <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">current_space</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)
 <span class="ruby-keyword">end</span>
 </pre>
           
@@ -1169,26 +1452,23 @@ right.</p>
 
           
           <div class="method-source-code" id="window_list-source">
-            <pre><span class="ruby-comment"># File lib/totalspaces.rb, line 387</span>
+            <pre><span class="ruby-comment"># File lib/totalspaces2.rb, line 454</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">window_list</span>
   <span class="ruby-identifier">result</span> = []
   <span class="ruby-identifier">list</span> = <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_windowList</span>
-  <span class="ruby-identifier">main_array</span> = <span class="ruby-constant">Spaces</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">list</span>)
+  <span class="ruby-identifier">main_array</span> = <span class="ruby-constant">Windows</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">list</span>)
 
   (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">main_array</span>[<span class="ruby-value">:count</span>]).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">n</span>] = {}
-    <span class="ruby-identifier">windows_array</span> = <span class="ruby-constant">Space</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main_array</span>[<span class="ruby-value">:windows_arrays</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-constant">Space</span>.<span class="ruby-identifier">size</span>)
-    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">n</span>][<span class="ruby-value">:space_number</span>] = <span class="ruby-identifier">windows_array</span>[<span class="ruby-value">:space_number</span>]
-    <span class="ruby-identifier">result</span>[<span class="ruby-identifier">n</span>][<span class="ruby-value">:windows</span>] = []
-    (<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">windows_array</span>[<span class="ruby-value">:count</span>]).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">window_hash</span> = <span class="ruby-identifier">result</span>[<span class="ruby-identifier">n</span>][<span class="ruby-value">:windows</span>][<span class="ruby-identifier">m</span>] = {}
-      <span class="ruby-identifier">window</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">windows_array</span>[<span class="ruby-value">:windows_array</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">*</span> <span class="ruby-constant">Window</span>.<span class="ruby-identifier">size</span>)
-      <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:window_id</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:window_id</span>]
-      <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:title</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:title</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
-      <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:frame</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:frame</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
-      <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:is_on_all_spaces</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:is_on_all_spaces</span>]
-      <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:app_name</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:app_name</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">window</span> = <span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">main_array</span>[<span class="ruby-value">:windows_array</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span> <span class="ruby-operator">*</span> <span class="ruby-constant">Window</span>.<span class="ruby-identifier">size</span>)
+    <span class="ruby-identifier">window_hash</span> = {}
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:window_id</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:window_id</span>]
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:title</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:title</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:frame</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:frame</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:is_on_all_spaces</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:is_on_all_spaces</span>]
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:app_name</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:app_name</span>].<span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-string">&quot;UTF-8&quot;</span>)
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:display_id</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:display_id</span>]
+    <span class="ruby-identifier">window_hash</span>[<span class="ruby-value">:space_number</span>] = <span class="ruby-identifier">window</span>[<span class="ruby-value">:space_number</span>]
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">window_hash</span>
   <span class="ruby-keyword">end</span>
   
   <span class="ruby-constant">TSApi</span>.<span class="ruby-identifier">tsapi_freeWindowList</span>(<span class="ruby-identifier">list</span>)
@@ -1214,7 +1494,7 @@ right.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

@@ -59,7 +59,7 @@
 
   <ul class="link-list">
   
-    <li><a href="./TotalSpaces.html">TotalSpaces</a>
+    <li><a href="./TotalSpaces2.html">TotalSpaces2</a>
   
   </ul>
 </nav>
@@ -69,25 +69,23 @@
 
 <div id="documentation" class="description">
 
-<h1 id="label-TotalSpaces+-+Ruby+API+bindings+for+TotalSpaces+from+BinaryAge"><a href="TotalSpaces.html">TotalSpaces</a> - Ruby API bindings for <a href="TotalSpaces.html">TotalSpaces</a> from BinaryAge<span><a href="#label-TotalSpaces+-+Ruby+API+bindings+for+TotalSpaces+from+BinaryAge">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-TotalSpaces2+-+Ruby+API+bindings+for+TotalSpaces2+from+BinaryAge"><a href="TotalSpaces2.html">TotalSpaces2</a> - Ruby API bindings for <a href="TotalSpaces2.html">TotalSpaces2</a> from BinaryAge<span><a href="#label-TotalSpaces2+-+Ruby+API+bindings+for+TotalSpaces2+from+BinaryAge">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<h2 id="label-2013-02+At+present+this+is+pre-release%2C+there+is+no+public+version+of+TotalSpaces+containing+the+API.">2013-02 At present this is pre-release, there is no public version of <a href="TotalSpaces.html">TotalSpaces</a> containing the API.<span><a href="#label-2013-02+At+present+this+is+pre-release%2C+there+is+no+public+version+of+TotalSpaces+containing+the+API.">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-PRERELEASE%3A+You+will+be+able+to+use+the+API+with+versions+2.1+and+above+of+totalspaces.">PRERELEASE: You will be able to use the API with versions 2.1 and above of totalspaces.<span><a href="#label-PRERELEASE%3A+You+will+be+able+to+use+the+API+with+versions+2.1+and+above+of+totalspaces.">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>This gem enables you to get information from and to control <a
-href="http:/totalspaces.binaryage.com">TotalSpaces</a></p>
+href="http:/totalspaces.binaryage.com">TotalSpaces2</a></p>
 
 <p>It is the officially supported way of using the API library
-libtotalspacesapi, and the required dylib  comes bundled with this gem.
+libtotalspaces2api, and the required dylib  comes bundled with this gem.
 This gem uses <a href="https:/github.com/ffi/ffi">Ruby-FFI</a> to call the
 functions in the dylib. You&#39;ll need a sane ruby and compilation
 environment to install ruby-ffi - it probably won&#39;t install immediately
-with the ruby that comes with Mountain Lion because none of the compilation
+with the ruby that comes with Mavericks because none of the compilation
 tools are present. We use <a
 href="http:/mxcl.github.com/homebrew">homebrew</a> and <a
 href="https:/github.com/sstephenson/rbenv">rbenv</a> to manage our ruby
-scripting environment. <a
-href="http:/jacobswanner.com/2012/07/13/ruby-1-9-3-without-gcc.html">This
-simple guide</a> may help if you are new to this.</p>
+scripting environment.</p>
 
 <p>You may use this gem in various ways. For instance, you could:</p>
 <ul><li>
@@ -102,45 +100,47 @@ those spaces when the owning app restarts</p>
 </li></ul>
 
 <p>API support, and support for this gem starts with <a
-href="TotalSpaces.html">TotalSpaces</a> v1.1.4. The API is a premium
+href="TotalSpaces2.html">TotalSpaces2</a> v2.0.12 The API is a premium
 feature, and will only work with registered versions of <a
-href="TotalSpaces.html">TotalSpaces</a>.</p>
+href="TotalSpaces2.html">TotalSpaces2</a>.</p>
 
 <h2 id="label-Download+and+installation">Download and installation<span><a href="#label-Download+and+installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>The latest version of the <a href="TotalSpaces.html">TotalSpaces</a> gem
+<p>The latest version of the <a href="TotalSpaces2.html">TotalSpaces2</a> gem
 can be installed with RubyGems:</p>
 
-<pre>% [sudo] gem install totalspaces</pre>
+<pre>% [sudo] gem install totalspaces2</pre>
 
 <p>Source code can be downloaded on GitHub</p>
 <ul><li>
 <p><a
-href="https://github.com/binaryage/totalspaces-api">github.com/binaryage/totalspaces-api</a></p>
+href="https://github.com/binaryage/totalspaces2-api">github.com/binaryage/totalspaces2-api</a></p>
 </li></ul>
 
 <h2 id="label-Documentation">Documentation<span><a href="#label-Documentation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p><a href="TotalSpaces.html">module TotalSpaces</a></p>
+<p><a
+href="http:/binaryage.github.io/totalspaces2-api/ruby/rdoc/TotalSpaces2.html">module
+TotalSpaces2</a></p>
 
 <h2 id="label-Examples">Examples<span><a href="#label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;totalspaces&#39;</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;totalspaces2&#39;</span>
 
-<span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">on_space_change</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Moving from space #{from} to space #{to}&quot;</span>;}
+<span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">on_space_change</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">display_id</span><span class="ruby-operator">|</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Moving from space #{from} to space #{to}&quot;</span>;}
 
-<span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">move_to_space</span>(<span class="ruby-value">1</span>)
+<span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">move_to_space</span>(<span class="ruby-value">1</span>)
 
-<span class="ruby-identifier">current_space</span> = <span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">current_space</span>
+<span class="ruby-identifier">current_space</span> = <span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">current_space</span>
 <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current space number: #{current_space}&quot;</span>
-<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current space is called: #{TotalSpaces.name_for_space(current_space)}&quot;</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Current space is called: #{TotalSpaces2.name_for_space(current_space)}&quot;</span>
 
-<span class="ruby-constant">TotalSpaces</span>.<span class="ruby-identifier">set_name_for_space</span>(<span class="ruby-value">1</span>, <span class="ruby-string">&quot;Home&quot;</span>)
+<span class="ruby-constant">TotalSpaces2</span>.<span class="ruby-identifier">set_name_for_space</span>(<span class="ruby-value">1</span>, <span class="ruby-string">&quot;Home&quot;</span>)
 </pre>
 
 <h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>The <a href="TotalSpaces.html">TotalSpaces</a> gem is released under the
+<p>The <a href="TotalSpaces2.html">TotalSpaces2</a> gem is released under the
 MIT license:</p>
 <ul><li>
 <p><a
@@ -151,14 +151,14 @@ href="http://www.opensource.org/licenses/MIT">www.opensource.org/licenses/MIT</a
 
 <h2 id="label-Support+and+feature+requests">Support and feature requests<span><a href="#label-Support+and+feature+requests">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
-<p><a href="http://support.binaryage.com">support.binaryage.com</a></p>
+<p><a href="http://discuss.binaryage.com">discuss.binaryage.com</a></p>
 </li></ul>
 </div>
 
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

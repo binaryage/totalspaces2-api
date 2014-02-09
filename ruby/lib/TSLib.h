@@ -50,12 +50,22 @@ const char *tsapi_totalSpacesVersion();
 const char *tsapi_libTotalSpacesVersion();
 
 /*
+ * Struct containing info about a display.
+ */
+struct tsapi_display {
+  CGDirectDisplayID displayId;
+  char *displayName;
+  size_t width;
+  size_t height;
+};
+
+/*
  * Struct containing the count of spaces and a pointer to an
  * array of CGDirectDisplayIDs.
  */
 struct tsapi_displays {
   unsigned int displaysCount;
-  CGDirectDisplayID *displays;
+  struct tsapi_display *displays;
 };
 
 /*
@@ -131,7 +141,7 @@ bool tsapi_setNameForSpaceOnDisplay(unsigned int spaceNumber, char *name, CGDire
 /*
  * Type for space change callback.
  */
-typedef void (*space_change_callback_t)(unsigned int fromSpaceNumber, unsigned int toSpaceNumber);
+typedef void (*space_change_callback_t)(unsigned int fromSpaceNumber, unsigned int toSpaceNumber, CGDirectDisplayID displayID);
 
 /*
  * Set the function that will be called when the visible space changes.
@@ -172,55 +182,46 @@ struct tsapi_window {
   bool isOnAllSpaces;
   char *title;
   char *frame;
+  CGDirectDisplayID displayID;
+  unsigned int spaceNumber;
 };
 
 /*
- * Struct containing information about a space.
+ * Struct containing information about windows.
  * Contains a pointer to an array of tsapi_window structs.
  */
-struct tsapi_space {
-  unsigned int spaceNumber;
+struct tsapi_windows {
   unsigned int windowCount;
   struct tsapi_window *windows;
 };
 
 /*
- * Struct containing the count of spaces and a pointer to an
- * array of tsapi_space structs.
- */
-struct tsapi_spaces {
-  unsigned int spacesCount;
-  struct tsapi_space *spaces;
-};
-
-/*
- * Return a pointer to a tsapi_spaces struct containing information about all the windows
+ * Return a pointer to a tsapi_windows struct containing information about all the windows
  * in all spaces.
  *
- * The windows are listed front to back, so the first widow in the array is the frontmost.
+ * The windows are listed in space order for each display, and within each space
+ * the windows are listed front to back, so earlier windows in the array are frontmost.
  *
  * You must call tsapi_freeWindowList when you have finished with this.
  */
-struct tsapi_spaces *tsapi_windowList();
+struct tsapi_windows *tsapi_windowList();
 
 /*
  * Free a previously returned tsapi_spaces struct
  */
-void tsapi_freeWindowList(struct tsapi_spaces *windowList);
+void tsapi_freeWindowList(struct tsapi_windows *windowList);
 
 /*
  * Move a window to a different space
  * The windowId must be one that has been returned in a tsapi_window struct
  *
- * Returns true on success, false if the windowId or spaceNumber was invalid
+ * Returns true on success, false if the windowID or spaceNumber was invalid
  */
-bool tsapi_moveWindowToSpace(unsigned int windowId, unsigned int spaceNumber);
+bool tsapi_moveWindowToSpaceOnDisplay(unsigned int windowID, unsigned int spaceNumber, CGDirectDisplayID displayID);
 
 /*
  * Move a space to another position
- * You cannot move a space to position 1, and you cannot move the first
- * space anywhere else - it is fixed.
- * You cannot move full screen apps around with this method, only normal desktops.
+ * You cannot move space 1 when displays have separate spaces is turned off.
  *
  * Returns true on success, false if the spaceNumber or positionNumber was
  * invalid
