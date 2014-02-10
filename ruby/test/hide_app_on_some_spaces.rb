@@ -1,24 +1,30 @@
-require 'totalspaces'
+PathHere = File.dirname(__FILE__)
+$LOAD_PATH.unshift File.join(PathHere, "..", "lib")
 
-if TotalSpaces.lib_total_spaces_version != TotalSpaces.api_version
-  puts "Comms error!"
+require 'totalspaces2'
+
+if TotalSpaces2.lib_total_spaces_version.split('.')[0] != TotalSpaces2.api_version.split('.')[0]
+  puts "Version error!"
   exit(1)
 end
 
-TotalSpaces.on_space_change do |from, to|
-  if to == 3 || to == 4
-    # hide
-    %x{osascript -e 'tell application "Finder"
-      set visible of process "iCal" to false
+TotalSpaces2.on_space_change do |from, to, display_id|
+  name = TotalSpaces2.name_for_space_on_display(to, display_id)
+  if name != "Dashboard"
+    if to == 3 || to == 4
+      # hide
+      puts "space = #{to}, hiding"
+      %x{osascript -e 'tell application "Finder"
+        set visible of process "Calendar" to false
       end tell'}
-  else
-    # unhide
-    puts "space = #{to}, showing"
-    %x{osascript -e 'tell application "Finder"
-      set visible of process "iCal" to true
+    else
+      # unhide
+      puts "space = #{to}, showing"
+      %x{osascript -e 'tell application "Finder"
+        set visible of process "Calendar" to true
       end tell'}
+    end
   end
 end
 
 sleep
-
