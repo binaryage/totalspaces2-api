@@ -3,7 +3,7 @@ Gem::Specification.new do |s|
   s.version = "2.0"
 
   s.authors = ["Stephen Sykes"]
-  s.date = %q{2013-11-20}
+  s.date = %q{2014-02-10}
   s.description = %q{This allows you to control the TotalSpaces2 desktop manager for mac from ruby.}
   s.email = %q{stephen@binaryage.com}
   s.files = [
