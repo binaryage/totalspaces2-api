@@ -410,7 +410,7 @@ module TotalSpaces2
     # arguments passed to the block.
     #
     #   
-    #   TotalSpaces.on_layout_change {puts "Spaces changed"}
+    #   TotalSpaces2.on_layout_change {puts "Spaces changed"}
     #   
     #   sleep
     #
