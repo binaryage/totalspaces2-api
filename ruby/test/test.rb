@@ -1,3 +1,6 @@
+# Set the transitions speed slider to the fastest position
+# in Layout prefs before running these tests
+
 require 'rubygems'
 
 require 'test/unit'
@@ -50,9 +53,9 @@ class TotalSpaces2Test < Test::Unit::TestCase
     
     assert_equal current_space, @reported_space
     
-    TotalSpaces2.cancel_on_space_change
-
     assert_equal 2, @change_count
+    
+    TotalSpaces2.cancel_on_space_change
   end
   
   def test_main_display_is_first_reported_display
@@ -111,6 +114,8 @@ class TotalSpaces2Test < Test::Unit::TestCase
     TotalSpaces2.set_grid_columns_on_display(original_number, 0)
     
     assert @layout_changed
+    
+    TotalSpaces2.cancel_on_layout_change
   end
   
   def test_can_cancel_space_change_callback
@@ -130,9 +135,11 @@ class TotalSpaces2Test < Test::Unit::TestCase
     assert_equal 1, @change_count
     
     TotalSpaces2.move_to_space_on_display(current_space, 0)
-    
+
     wait_for_change_count_to_increment
 
+    assert_equal current_space, TotalSpaces2.current_space
+    
     assert_equal 2, @change_count
 
     TotalSpaces2.cancel_on_space_change
@@ -157,25 +164,29 @@ class TotalSpaces2Test < Test::Unit::TestCase
     
     @layout_changed = false
     original_number = TotalSpaces2.grid_columns_on_display(0)
-    TotalSpaces2.set_grid_columns_on_display(original_number + 1, 0)
-    
+    TotalSpaces2.set_grid_columns_on_display(original_number + 1, 0)    
     wait_for_layout_change
-    
+
+    first_change = @layout_changed
+
+    @layout_changed = false
     TotalSpaces2.set_grid_columns_on_display(original_number, 0)
-    
+    wait_for_layout_change
+
+    assert first_change
     assert @layout_changed
-    
+
     TotalSpaces2.cancel_on_layout_change
-    
+
     @layout_changed = false
     original_number = TotalSpaces2.grid_columns_on_display(0)
     TotalSpaces2.set_grid_columns_on_display(original_number + 1, 0)
-    
+
     wait_for_layout_change
     
     TotalSpaces2.set_grid_columns_on_display(original_number, 0)
     
-    assert !@layout_changed    
+    assert !@layout_changed
   end
   
   def test_window_in_window_list_has_right_keys
@@ -212,6 +223,8 @@ class TotalSpaces2Test < Test::Unit::TestCase
     TotalSpaces2.move_space_to_position_on_display(2, 1, 0)
 
     assert @layout_changed
+    
+    TotalSpaces2.cancel_on_layout_change
   end
   
   
@@ -236,5 +249,24 @@ class TotalSpaces2Test < Test::Unit::TestCase
     TotalSpaces2.set_name_for_space_on_display(1, old_name, 0)
     
     assert_equal "test_name", new_name
+    
+    TotalSpaces2.cancel_on_layout_change
+  end
+  
+  def test_activate_front_window
+    current_space = TotalSpaces2.current_space
+    list = TotalSpaces2.window_list.select {|window| window[:space_number] == current_space}
+    window = list[0]
+    window2 = list[1]
+    assert window && window2, "you need 2 windows on the current space for this test to work"
+    window_id = window[:window_id]
+    window2_id = window2[:window_id]
+    
+    TotalSpaces2.set_front_window(window2_id)
+
+    list2 = TotalSpaces2.window_list.select {|window| window[:space_number] == current_space}
+    top_window_after_set_front = list2[0]
+    TotalSpaces2.set_front_window(window_id)
+    assert_equal window2_id, top_window_after_set_front[:window_id]
   end
 end

@@ -107,6 +107,8 @@ module TSApi  #:nodoc:
   
   attach_function :tsapi_addDesktopsOnDisplay, [:uint, :uint], :uint
   attach_function :tsapi_removeDesktopsOnDisplay, [:uint, :uint], :bool
+  
+  attach_function :tsapi_setFrontWindow, [:uint], :void
 end
 
 module TotalSpaces2
@@ -570,6 +572,13 @@ module TotalSpaces2
     #
     def remove_desktops_on_display(number_to_remove, display_id)
       TSApi.tsapi_removeDesktopsOnDisplay(number_to_remove, display_id)
+    end
+    
+    # Move a particular window to the front and activate it.
+    # This might be usful after moving windows to other desktops.
+    #
+    def set_front_window(window_id)
+      TSApi.tsapi_setFrontWindow(window_id)
     end
   end
 end

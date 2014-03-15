@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name = %q{totalspaces2}
-  s.version = "2.0"
+  s.version = "2.0.1"
 
   s.authors = ["Stephen Sykes"]
-  s.date = %q{2014-02-10}
+  s.date = %q{2014-03-15}
   s.description = %q{This allows you to control the TotalSpaces2 desktop manager for mac from ruby.}
   s.email = %q{stephen@binaryage.com}
   s.files = [

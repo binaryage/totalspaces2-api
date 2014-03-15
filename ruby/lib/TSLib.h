@@ -8,7 +8,7 @@
 //  The API is a premium feature, and will only work with registered versions of TotalSpaces.
 //
 
-#ifndef totalspacesapi_tslib
+#ifndef totalspacesapi_tslib_h
 #define totalspacesapi_tslib_h
 
 #import <Foundation/Foundation.h>
@@ -251,6 +251,12 @@ unsigned int tsapi_addDesktopsOnDisplay(unsigned int numberToAdd, CGDirectDispla
  * than 1 desktop remaining.
  */
 bool tsapi_removeDesktopsOnDisplay(unsigned int numberToRemove, CGDirectDisplayID displayID);
+
+/*
+ * Set the front window
+ * Set the given window id to be at the front.
+ */
+void tsapi_setFrontWindow(unsigned int windowID);
 
 #endif
 
