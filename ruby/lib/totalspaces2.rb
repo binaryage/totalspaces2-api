@@ -5,8 +5,7 @@
 # It is the officially supported way of using the API library libtotalspaces2api, and the required dylib 
 # comes bundled with this gem. This gem uses {Ruby-FFI}[link:https://github.com/ffi/ffi] to call the functions in the dylib.
 # You'll need a sane ruby and compilation environment to install ruby-ffi - it probably won't install immediately with the
-# ruby that comes with OSX because none of the compilation tools are present. We use {homebrew}[link:http://mxcl.github.com/homebrew/]
-# and {rbenv}[link:https://github.com/sstephenson/rbenv/] to manage our ruby scripting environment.
+# ruby that comes with OSX because none of the compilation tools are present - you'll need to install Xcode first.
 #
 # You may use this gem in various ways. For instance, you could:
 #
@@ -521,7 +520,7 @@ module TotalSpaces2
     # Move space to a new position on another screen.
     # This won't work if you do not have displays have separate spaces enabled.
     #
-    # Returns false any parameters are not valid.
+    # Returns false if any parameters are not valid.
     #
     #   display_id = TotalSpaces2.main_display[:display_id]
     #   display2_id = TotalSpaces2.display_list[1][:display_id]
