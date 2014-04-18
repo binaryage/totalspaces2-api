@@ -27,6 +27,9 @@
 #
 #  % [sudo] gem install totalspaces2
 #
+# You will need Xcode installed in order for the C compiler to be present in order to install
+# ruby-ffi, which is required (and automatically installed) by the totalspaces2 gem.
+#
 # Source code can be downloaded on GitHub
 #
 # * https://github.com/binaryage/totalspaces2-api
@@ -104,6 +107,7 @@ module TSApi  #:nodoc:
   attach_function :tsapi_moveWindowToSpaceOnDisplay, [:uint, :uint, :uint], :bool
   
   attach_function :tsapi_moveSpaceToPositionOnDisplay, [:uint, :uint, :uint], :bool
+  attach_function :tsapi_moveSpaceOnDisplayToPositionOnDisplay, [:uint, :uint, :uint, :uint], :bool
   
   attach_function :tsapi_addDesktopsOnDisplay, [:uint, :uint], :uint
   attach_function :tsapi_removeDesktopsOnDisplay, [:uint, :uint], :bool
@@ -499,7 +503,7 @@ module TotalSpaces2
     #   TotalSpaces2.move_space_to_position(4, 2)
     #
     def move_space_to_position(space_number, position_number)
-      TSApi.tsapi_moveSpaceToPositionOnDisplay(space_number, position_number)
+      TSApi.tsapi_moveSpaceToPositionOnDisplay(space_number, position_number, 0)
     end
 
     # Move space to a new position in the grid. Spaces can only be moved 
@@ -514,6 +518,19 @@ module TotalSpaces2
       TSApi.tsapi_moveSpaceToPositionOnDisplay(space_number, position_number, display_id)
     end
     
+    # Move space to a new position on another screen.
+    # This won't work if you do not have displays have separate spaces enabled.
+    #
+    # Returns false any parameters are not valid.
+    #
+    #   display_id = TotalSpaces2.main_display[:display_id]
+    #   display2_id = TotalSpaces2.display_list[1][:display_id]
+    #   TotalSpaces2.move_space_on_display_to_position_on_display(2, display_id, 1, display2_id)
+    #
+    def move_space_on_display_to_position_on_display(space_number, from_display_id, position_number, to_display_id)
+      TSApi.tsapi_moveSpaceOnDisplayToPositionOnDisplay(space_number, from_display_id, position_number, to_display_id)
+    end
+
     # Add desktops
     # There can be at most 16 desktops unless the display has collected some when
     # a secondary display has been unplugged.

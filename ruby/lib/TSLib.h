@@ -228,6 +228,8 @@ bool tsapi_moveWindowToSpaceOnDisplay(unsigned int windowID, unsigned int spaceN
  */
 bool tsapi_moveSpaceToPositionOnDisplay(unsigned int spaceNumber, unsigned int positionNumber, CGDirectDisplayID displayID);
 
+bool tsapi_moveSpaceOnDisplayToPositionOnDisplay(unsigned int spaceNumber, CGDirectDisplayID fromDisplayID, unsigned int positionNumber, CGDirectDisplayID toDisplayID);
+
 /*
  * Add desktops
  * There can usually be at most 16 desktops, unless desktops have migrated
