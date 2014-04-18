@@ -99,6 +99,14 @@ unsigned int tsapi_currentSpaceNumberOnDisplay(CGDirectDisplayID displayID);
 const char *tsapi_spaceNameForSpaceNumberOnDisplay(unsigned int spaceNumber, CGDirectDisplayID displayID);
 
 /*
+ * The uuid for the given space number. This uniquely identifies the space, even when
+ * it is moved to a different position or to another monitor.
+ *
+ * You must call tsapi_freeString when you have finished with the returned string.
+ */
+const char *tsapi_uuidForSpaceNumberOnDisplay(unsigned int spaceNumber, CGDirectDisplayID displayID);
+
+/*
  * The total number of spaces.
  * This includes the dashboard if you have it set as a space, and any
  * fullscreen apps.
@@ -228,6 +236,13 @@ bool tsapi_moveWindowToSpaceOnDisplay(unsigned int windowID, unsigned int spaceN
  */
 bool tsapi_moveSpaceToPositionOnDisplay(unsigned int spaceNumber, unsigned int positionNumber, CGDirectDisplayID displayID);
 
+/*
+ * Move a space to another position on another display
+ * You cannot use this displays have separate spaces is turned off.
+ * You cannot move a currently visible space.
+ *
+ * Returns true on success, false if any parameter was invalid.
+ */
 bool tsapi_moveSpaceOnDisplayToPositionOnDisplay(unsigned int spaceNumber, CGDirectDisplayID fromDisplayID, unsigned int positionNumber, CGDirectDisplayID toDisplayID);
 
 /*

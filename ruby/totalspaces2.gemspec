@@ -1,9 +1,9 @@
 Gem::Specification.new do |s|
   s.name = %q{totalspaces2}
-  s.version = "2.0.1"
+  s.version = "2.0.2"
 
   s.authors = ["Stephen Sykes"]
-  s.date = %q{2014-03-15}
+  s.date = %q{2014-04-18}
   s.description = %q{This allows you to control the TotalSpaces2 desktop manager for mac from ruby.}
   s.email = %q{stephen@binaryage.com}
   s.files = [
@@ -13,9 +13,10 @@ Gem::Specification.new do |s|
     "lib/libtotalspaces2api.dylib",
     "lib/TSLib.h"
   ]
+  s.license = 'MIT'
   s.homepage = %q{https://github.com/binaryage/totalspaces2-api/tree/master/ruby}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.summary = %q{TotalSpaces2 control from ruby}
-  s.add_dependency('ffi', '>= 1.0.11')
+  s.add_runtime_dependency 'ffi', '~> 1.0', '>= 1.0.11'
 end

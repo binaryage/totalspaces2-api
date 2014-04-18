@@ -83,6 +83,7 @@ module TSApi  #:nodoc:
   
   attach_function :tsapi_currentSpaceNumberOnDisplay, [:uint], :uint
   attach_function :tsapi_spaceNameForSpaceNumberOnDisplay, [:uint, :uint], :pointer
+  attach_function :tsapi_uuidForSpaceNumberOnDisplay, [:uint, :uint], :pointer
   attach_function :tsapi_numberOfSpacesOnDisplay, [:uint], :uint
   
   attach_function :tsapi_definedColumnsOnDisplay, [:uint], :uint
@@ -249,7 +250,7 @@ module TotalSpaces2
     end
 
     # Returns the number of the current space on the given display. 
-    # Space numbering starts at 1
+    # Space numbering starts at 1.
     #
     #   display_id = TotalSpaces2.displays[0]
     #   puts "Current space number: #{TotalSpaces2.current_space_on_display(display_id)}"
@@ -259,7 +260,7 @@ module TotalSpaces2
     end
     
     # Returns the name for a space on the main display. The returned string will be empty 
-    # if the space number is not valid
+    # if the space number is not valid.
     #
     #   current_space = TotalSpaces2.current_space
     #   puts "Current space is called: #{TotalSpaces2.name_for_space(current_space)}"
@@ -270,7 +271,7 @@ module TotalSpaces2
     end
 
     # Returns the name for a space. The returned string will be empty if the space number is
-    # not valid
+    # not valid.
     #
     #   current_space = TotalSpaces2.current_space
     #   display_id = TotalSpaces2.main_display[:display_id]
@@ -279,6 +280,29 @@ module TotalSpaces2
     def name_for_space_on_display(space_number, display_id)
       name = string_and_free(TSApi.tsapi_spaceNameForSpaceNumberOnDisplay(space_number, display_id))
       name.force_encoding("UTF-8")
+    end
+    
+    # Returns the uuid for a space on the main display. The returned string will be empty 
+    # if the space number is not valid.
+    #
+    #   current_space = TotalSpaces2.current_space
+    #   puts "Current space uuid is: #{TotalSpaces2.uuid_for_space(current_space)}"
+    #
+    def uuid_for_space(space_number)
+      uuid = string_and_free(TSApi.tsapi_uuidForSpaceNumberOnDisplay(space_number, 0))
+      uuid.force_encoding("UTF-8")
+    end
+    
+    # Returns the uuid for a space. The returned string will be empty 
+    # if the space number is not valid.
+    #
+    #   current_space = TotalSpaces2.current_space
+    #   display_id = TotalSpaces2.main_display[:display_id]
+    #   puts "Current space uuid is: #{TotalSpaces2.uuid_for_space_on_display(current_space, display_id)}"
+    #
+    def uuid_for_space_on_display(space_number, display_id)
+      uuid = string_and_free(TSApi.tsapi_uuidForSpaceNumberOnDisplay(space_number, display_id))
+      uuid.force_encoding("UTF-8")
     end
     
     # Returns the total number of spaces including fullscreens, dashboard (if it's a space).
