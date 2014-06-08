@@ -235,7 +235,7 @@ class TotalSpaces2Test < Test::Unit::TestCase
     
     old_name = TotalSpaces2.name_for_space_on_display(1, 0)
     
-    TotalSpaces2.set_name_for_space_on_display(1, "test_name", 0)
+    TotalSpaces2.set_name_for_space_on_display(1, "move_space", 0)
     
     TotalSpaces2.move_space_to_position_on_display(1, 2, 0)
 
@@ -248,7 +248,7 @@ class TotalSpaces2Test < Test::Unit::TestCase
     
     TotalSpaces2.set_name_for_space_on_display(1, old_name, 0)
     
-    assert_equal "test_name", new_name
+    assert_equal "move_space", new_name
     
     TotalSpaces2.cancel_on_layout_change
   end
