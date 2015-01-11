@@ -113,6 +113,7 @@ module TSApi  #:nodoc:
   attach_function :tsapi_removeDesktopsOnDisplay, [:uint, :uint], :bool
   
   attach_function :tsapi_setFrontWindow, [:uint], :void
+  attach_function :tsapi_moveWindow, [:uint, :float, :float], :void
 end
 
 module TotalSpaces2
@@ -619,6 +620,20 @@ module TotalSpaces2
     #
     def set_front_window(window_id)
       TSApi.tsapi_setFrontWindow(window_id)
+    end
+
+    # Move a particular window to a new position.
+    # Use the origin from the frame given by window_list
+    # as the starting point to make adustments. There is no validation,
+    # you can place a window far off the screen if you wish.
+    #
+    # For instance, if the frame or window id 123 is "{{146, 23}, {1133, 754}}", 
+    # the origin is (146, 23). To move the window down 20 pixels, you would do this:
+    #
+    #   TotalSpaces2.move_window(123, 146, 43)
+    #
+    def move_window(window_id, x, y)
+      TSApi.tsapi_moveWindow(window_id, x, y)
     end
   end
 end

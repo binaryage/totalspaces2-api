@@ -275,5 +275,13 @@ bool tsapi_removeDesktopsOnDisplay(unsigned int numberToRemove, CGDirectDisplayI
  */
 void tsapi_setFrontWindow(unsigned int windowID);
 
+/*
+ * Move a window
+ * Use the origin from the frame given in the tsapi_window struct
+ * as the starting point to make adustments. There is no validation,
+ * you can place a window far off the screen if you wish.
+ */
+void tsapi_moveWindow(unsigned int windowID, float x, float y);
+
 #endif
 
