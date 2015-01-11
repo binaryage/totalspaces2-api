@@ -178,7 +178,7 @@ module TotalSpaces2
     
     public
     
-    # Returns the version of the dylib, a string such as "1.0"
+    # Returns the version of the dylib, a string such as "1.0.1"
     # You should be using the same dylib major version number as that returned by the api_version call
     #
     #   puts "libTotalSpaces2 version: #{TotalSpaces2.lib_total_spaces_version}"
@@ -193,8 +193,8 @@ module TotalSpaces2
       string_and_free(TSApi.tsapi_libTotalSpacesVersion)
     end
 
-    # Returns the version of the api present in TotalSpaces2, a string such as "1.0"
-    # You should be using the same dylib version as that returned by the this call
+    # Returns the version of the api present in TotalSpaces2, a string such as "1.0.1"
+    # You should be using the same dylib major version number as that returned by the this call
     #
     #   puts "TotalSpaces2 API version: #{TotalSpaces2.api_version}"
     #
