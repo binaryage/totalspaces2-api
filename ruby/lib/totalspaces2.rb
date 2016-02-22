@@ -114,6 +114,8 @@ module TSApi  #:nodoc:
   
   attach_function :tsapi_setFrontWindow, [:uint], :void
   attach_function :tsapi_moveWindow, [:uint, :float, :float], :void
+  
+  attach_function :tsapi_bindAppToSpace, [:string, :string], :void
 end
 
 module TotalSpaces2
@@ -634,6 +636,19 @@ module TotalSpaces2
     #
     def move_window(window_id, x, y)
       TSApi.tsapi_moveWindow(window_id, x, y)
+    end
+
+    # Bind an app to a space.
+    # The bundle_id is normally in the format "com.apple.mail"
+    # Setting the space_uuid to AllSpaces will result in an app
+    # appearing on every desktop.
+    # Setting the space_uuid to nil will delete the setting for the
+    # given bundle_id.
+    #
+    #   TotalSpaces2.bind_app_to_space("com.apple.mail", "AllSpaces")
+    #
+    def bind_app_to_space(bundle_id, space_uuid)
+      TSApi.tsapi_bindAppToSpace(bundle_id, space_uuid)
     end
   end
 end
