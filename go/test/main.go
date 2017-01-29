@@ -2,12 +2,6 @@
 
 package main
 
-/*
-#cgo CFLAGS: -x objective-c -I../ruby/lib
-#cgo LDFLAGS: -L../ruby/lib -ltotalspaces2api
-#include <TSLib.h>
-*/
-import "C"
 import (
 	"flag"
 	"fmt"
@@ -26,8 +20,7 @@ func main() {
 	desktopPtr := flag.Uint("desktop", 1, "desktop number")
 	flag.Parse()
 
-	C.tsapi_moveToSpaceOnDisplay(C.uint(*desktopPtr),
-		C.CGDirectDisplayID(*displayPtr))
+	totalspaces2.MoveToSpaceOnDisplay(*desktopPtr, *displayPtr)
 
 	displays := totalspaces2.DisplayList()
 	for i, value := range displays {
@@ -43,7 +36,6 @@ func main() {
 
 	t := totalspaces2.SpaceTypeForSpaceNumberOnDisplay(1, 0)
 	fmt.Printf("%v\n", t)
-	//C.tsapi_moveToSpaceOnDisplay(2, 1)
 
 	f := func(x uint, y uint, z uint) {
 		fmt.Printf("Space Change: %v -> %v (%v)\n", x, y, z)

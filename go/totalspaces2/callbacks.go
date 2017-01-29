@@ -3,10 +3,7 @@
 package totalspaces2
 
 /*
-#cgo CFLAGS: -x objective-c -I../../ruby/lib
-#cgo LDFLAGS: -L../../ruby/lib -ltotalspaces2api
 #include <TSLib.h>
-#include <stdlib.h>
 
 // static inlining
 extern void goSpaceChangeCallback(unsigned int from, unsigned int to, CGDirectDisplayID display);

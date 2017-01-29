@@ -2,11 +2,7 @@
 
 package totalspaces2
 
-/*
-#cgo CFLAGS: -x objective-c -I../../ruby/lib
-#cgo LDFLAGS: -L../../ruby/lib -ltotalspaces2api
-#include <TSLib.h>
-*/
+//#include <TSLib.h>
 import "C"
 import "unsafe"
 
