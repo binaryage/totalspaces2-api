@@ -40,6 +40,16 @@ func goSpaceChangeCallback(from C.uint, to C.uint, display C.CGDirectDisplayID) 
 	)
 }
 
+//  SetSpaceWillChangeCallback registers for notifications on space change.
+//
+// The given function will be called whenever you move from one space to
+// another. The arguments are the space number you moved from, and the
+// one you are moving to.
+//
+// There can only be one block registered at any time, the most
+// recently registered one will be called.  This callback is called
+// just before the space actually changes - current_space will still
+// report the from space.
 func SetSpaceWillChangeCallback(callback SpaceChangeCallback) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -50,11 +60,11 @@ func SetSpaceWillChangeCallback(callback SpaceChangeCallback) {
 			uint(display),
 		)
 	}
-
 	C.tsapi_setSpaceWillChangeCallback((C.space_change_callback_t)(unsafe.Pointer(C.goSpaceChangeCallback_cgo)))
-
 }
 
+// UnsetSpaceWillChangeCallback will cancel the onSpaceChange
+// notification.
 func UnsetSpaceWillChangeCallback() {
 	C.tsapi_unsetSpaceWillChangeCallback()
 	spaceChangeCallback = nil
@@ -69,6 +79,18 @@ func goSpaceLayoutChangedCallback() {
 	spaceLayoutChangedCallback()
 }
 
+// SetLayoutChangedCallback registers for notifications on layout change.
+//
+// The given block will be called whenever the layout changes - this
+// could be due to making an app fullscreen, changing a space name, or
+// changing the layout of the TotalSpaces2 grid. There are no
+// arguments passed to the block.
+//
+// When you get a notification from this method, you should re-fetch
+// any information about the spaces that you may be storing.
+//
+// There can only be one function registered at any time, the most
+// recently registered one will be called.
 func SetLayoutChangedCallback(callback SpaceLayoutChangedCallback) {
 	mu.Lock()
 	defer mu.Unlock()
@@ -76,6 +98,7 @@ func SetLayoutChangedCallback(callback SpaceLayoutChangedCallback) {
 	C.tsapi_setLayoutChangedCallback((C.space_layout_changed_callback_t)(unsafe.Pointer(C.goSpaceLayoutChangedCallback)))
 }
 
+// UnsetLayoutChangedCallback cancel the layout change notification
 func UnsetLayoutChangedCallback() {
 	C.tsapi_unsetLayoutChangedCallback()
 }

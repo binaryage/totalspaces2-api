@@ -13,6 +13,9 @@ type Display struct {
 	Height uint
 }
 
+// DisplayList returns an array of hashes with information about
+// attached displays. The ids returned from this call can be used
+// where a display id is required in the other calls in this library.
 func DisplayList() []*Display {
 	cDisplays := displayList()
 	defer freeDisplayList(cDisplays)

@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/joedevivo/totalspaces2-api/go/totalspaces2"
+	"github.com/binaryage/totalspaces2-api/go/totalspaces2"
 )
 
 func main() {

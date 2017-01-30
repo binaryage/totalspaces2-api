@@ -14,13 +14,17 @@ type Windows struct {
 type Window struct {
 	AppName       string
 	ID            uint
-	isOnAllSpaces bool
+	IsOnAllSpaces bool
 	Title         string
 	Frame         string
 	DisplayID     uint
 	SpaceNumber   uint
 }
 
+// WindowList gets a list of all the windows on your mac.
+
+// It returns an array containing Window for each window. The windows
+// are in front to back order within each space.
 func WindowList() []*Window {
 	cWindows := windowList()
 	defer freeWindowList(cWindows)
@@ -37,7 +41,7 @@ func WindowList() []*Window {
 		w[i] = &Window{
 			AppName:       C.GoString(cWin.appName),
 			ID:            uint(cWin.windowId),
-			isOnAllSpaces: bool(cWin.isOnAllSpaces),
+			IsOnAllSpaces: bool(cWin.isOnAllSpaces),
 			Title:         C.GoString(cWin.title),
 			Frame:         C.GoString(cWin.frame),
 			DisplayID:     uint(cWin.displayID),
