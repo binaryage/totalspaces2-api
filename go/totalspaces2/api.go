@@ -8,6 +8,7 @@ package totalspaces2
 #include <TSLib.h>
 */
 import "C"
+import "unsafe"
 
 type SpaceType int
 
@@ -143,7 +144,7 @@ func MoveToSpaceOnDisplay(space uint, display uint) bool {
 // length for a name is 255 bytes.
 func SetNameForSpaceOnDisplay(space uint, name string, display uint) bool {
 	str := C.CString(name)
-	defer C.free(str)
+	defer C.free(unsafe.Pointer(str))
 
 	return bool(
 		C.tsapi_setNameForSpaceOnDisplay(
@@ -233,10 +234,10 @@ func MoveWindow(window uint, x float64, y float64) {
 // space_uuid to nil will delete the setting for the given bundle_id.
 func BindAppToSpace(bundleId string, spaceUUID string) {
 	cBundle := C.CString(bundleId)
-	defer C.free(cBundle)
+	defer C.free(unsafe.Pointer(cBundle))
 
 	cSpace := C.CString(spaceUUID)
-	defer C.free(cSpace)
+	defer C.free(unsafe.Pointer(cSpace))
 	C.tsapi_bindAppToSpace(
 		cBundle,
 		cSpace)
