@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"time"
+	"os/signal"
 
 	"github.com/binaryage/totalspaces2-api/go/totalspaces2"
 )
@@ -15,6 +15,9 @@ func main() {
 	if !totalspaces2.Enabled() {
 		os.Exit(1)
 	}
+
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt)
 
 	displayPtr := flag.Uint("display", 0, "display number")
 	desktopPtr := flag.Uint("desktop", 1, "desktop number")
@@ -27,6 +30,13 @@ func main() {
 		fmt.Printf("Display %v:\n", i)
 		fmt.Printf("%#v\n", value)
 	}
+
+	name := totalspaces2.SpaceNameForSpaceNumberOnDisplay(1, displays[0].ID)
+	fmt.Printf("Current Name of Display0, Space1: %v\n", name)
+
+	totalspaces2.SetNameForSpaceOnDisplay(1, "Testing!", displays[0].ID)
+	tmpName := totalspaces2.SpaceNameForSpaceNumberOnDisplay(1, displays[0].ID)
+	fmt.Printf("Renamed Display0, Space1: %v\n", tmpName)
 
 	windows := totalspaces2.WindowList()
 	for i, value := range windows {
@@ -45,5 +55,9 @@ func main() {
 	})
 	totalspaces2.SetSpaceWillChangeCallback(f)
 	totalspaces2.MoveToSpaceOnDisplay(2, 0)
-	time.Sleep(time.Minute)
+
+	// Waiting for os.Signal
+	_ = <-c
+	totalspaces2.SetNameForSpaceOnDisplay(1, name, displays[0].ID)
+
 }
