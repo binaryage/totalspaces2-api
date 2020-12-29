@@ -236,7 +236,7 @@ module TotalSpaces2
     # Returns information about the main display.
     # Methods that do not take a display id always operate on this display.
     #
-    #   puts "Main display id: #{TotalSpaces2.main_display_id}"
+    #   puts "Main display id: #{TotalSpaces2.main_display}"
     #
     #   {:display_id=>69679040, :display_name=>"Color LCD", :width=>1440, :height=>900}
     #
